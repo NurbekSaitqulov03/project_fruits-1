@@ -1,3 +1,4 @@
+import csv
 def get_total_price(data:str)->float:
     """
     This function returns the total price of the fruits
@@ -7,6 +8,12 @@ def get_total_price(data:str)->float:
     returns:
         float: fruits total price
     """
-    return
-
+    data = csv.reader(data, delimiter=',')
+    x = 0
+    for i in data:
+        if not i[1].isalpha():
+            x += float(i[1])
+    return x
     
+f = open('fruits.csv', 'r')
+print(get_total_price(f))
